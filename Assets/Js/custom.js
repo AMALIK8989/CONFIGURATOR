@@ -370,7 +370,7 @@ $(document).ready(function() {
 
   $(document).ready(function() {
     // Fetch the local JSON file from Assets/Js/Trikes.json
-    $.getJSON("./Trikes.json", function(data) {
+    $.getJSON("./trikes.json", function(data) {
         
         // When a model card (inside <a>) is clicked
         $('a[data-id]').on('click', function(e) {
