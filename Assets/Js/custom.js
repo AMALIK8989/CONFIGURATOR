@@ -3,18 +3,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-$(document).ready(function() {
+//$(document).ready(function() {
   // Initialize Owl Carousel
-  $(".owl-carousel").owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: false,
-      autoplay: true,
-      autoplayTimeout: 3000,  // 3 seconds per item
-      items: 1,  // Show one item at a time
-      dots: true,
-  });
-});
+ // $(".owl-carousel").owlCarousel({
+ //     loop: true,
+//      margin: 10,
+ //     nav: false,
+     // autoplay: true,
+  //    autoplayTimeout: 3000,  // 3 seconds per item
+ //     items: 1,  // Show one item at a time
+//      dots: true,
+//  });
+//});
 
 
 // document.addEventListener("DOMContentLoaded", () => {
@@ -71,26 +71,26 @@ $(document).ready(function() {
 //   loopAdditionalSlides: 2,
 // };
 
-$(document).ready(function () {
-  const swiper = new Swiper('.swiper', {
-    spaceBetween: 0,
-    speed: 5000,
-    direction: 'horizontal',
-    autoplay: { delay: 0, disableOnInteraction: false },
-    loop: true,
-    slidesPerView: 1,
-    freeMode: true,
-    lazy: { loadPrevNext: true },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1024: { slidesPerView: 5 },
-    },
-  });
+//$(document).ready(function () {
+//  const swiper = new Swiper('.swiper', {
+//    spaceBetween: 0,
+//    speed: 5000,
+//    direction: 'horizontal',
+//    autoplay: { delay: 0, disableOnInteraction: false },
+//    loop: true,
+//    slidesPerView: 1,
+//    freeMode: true,
+//    lazy: { loadPrevNext: true },
+ //   breakpoints: {
+ //     640: { slidesPerView: 2 },
+//      768: { slidesPerView: 3 },
+//      1024: { slidesPerView: 5 },
+//    },
+//  });
 });
 
 
-var swiper = new Swiper(".swiper-container", swiperOptions);
+//var swiper = new Swiper(".swiper-container", swiperOptions);
 
 // const $card = document.querySelector('.card');
 // let bounds;
@@ -370,7 +370,7 @@ $(document).ready(function() {
 
   $(document).ready(function() {
     // Fetch the local JSON file from Assets/Js/Trikes.json
-    $.getJSON("Assets/Js/Trikes.json", function(data) {
+    $.getJSON("./Trikes.json", function(data) {
         
         // When a model card (inside <a>) is clicked
         $('a[data-id]').on('click', function(e) {
