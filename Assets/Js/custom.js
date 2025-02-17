@@ -367,3 +367,37 @@ $(document).ready(function() {
       })
       .catch((error) => console.error("Error fetching data:", error));
   });
+
+  $(document).ready(function() {
+    // Fetch the JSON data from the provided URL
+    $.getJSON("https://configurator-v1.netlify.app/Assets/Js/Trikes.json", function(data) {
+        // When a model card is clicked
+        $('.model-card').on('click', function() {
+            // Get the data-id of the clicked card
+            var cardId = $(this).data('id');
+
+            // Find the corresponding item from the JSON data
+            var selectedItem = data.find(function(item) {
+                return item.id === cardId;
+            });
+
+            // Check if the item exists
+            if (selectedItem) {
+                // Clear previous features in case the modal is opened multiple times
+                $('#featuresList').empty();
+
+                // Insert the features into the modal
+                selectedItem.features.forEach(function(feature) {
+                    $('#featuresList').append('<li class="list-group-item">' + feature + '</li>');
+                });
+
+                // Show the modal
+                $('#featuresModal').modal('show');
+            } else {
+                alert('No features found for this model.');
+            }
+        });
+    }).fail(function() {
+        alert("Failed to load the JSON data.");
+    });
+});
