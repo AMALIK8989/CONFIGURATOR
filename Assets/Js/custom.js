@@ -324,61 +324,64 @@ $(document).ready(function() {
 
 
 
-  document.addEventListener("DOMContentLoaded", function () {
-    fetch("vehicles.json") // Replace with your actual JSON file path
-      .then((response) => response.json())
-      .then((data) => {
-        const container = document.getElementById("trikes-container");
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   fetch("vehicles.json") // Replace with your actual JSON file path
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const container = document.getElementById("trikes-container");
 
-        // Group vehicles by their type or base model name
-        const groupedVehicles = data.vehicles.reduce((acc, vehicle) => {
-          const baseName = vehicle.name.split(" ")[0] + " " + vehicle.name.split(" ")[1]; // Extract first two words
-          if (!acc[baseName]) {
-            acc[baseName] = [];
-          }
-          acc[baseName].push(vehicle);
-          return acc;
-        }, {});
+  //       // Group vehicles by their type or base model name
+  //       const groupedVehicles = data.vehicles.reduce((acc, vehicle) => {
+  //         const baseName = vehicle.name.split(" ")[0] + " " + vehicle.name.split(" ")[1]; // Extract first two words
+  //         if (!acc[baseName]) {
+  //           acc[baseName] = [];
+  //         }
+  //         acc[baseName].push(vehicle);
+  //         return acc;
+  //       }, {});
 
-        // Generate HTML for each group
-        Object.keys(groupedVehicles).forEach((groupName) => {
-          let sectionHTML = `
-            <h1 class="text-center mb-4 text-dark text-head">${groupName}</h1>
-            <div class="row justify-content-center">
-          `;
+  //       // Generate HTML for each group
+  //       Object.keys(groupedVehicles).forEach((groupName) => {
+  //         let sectionHTML = `
+  //           <h1 class="text-center mb-4 text-dark text-head">${groupName}</h1>
+  //           <div class="row justify-content-center">
+  //         `;
 
-          groupedVehicles[groupName].forEach((trike) => {
-            sectionHTML += `
-              <div class="col-md-6 col-sm-12 col-lg-3 col-xl-4">
-                <div class="model-card card">
-                  <img src="${trike.preview_image}" alt="${trike.name}" class="img-fluid img-bike">
-                  <div class="card-body card-details">
-                    <p class="text-dark text-dak">${trike.name}</p>
-                  </div>
-                </div>
-              </div>
-            `;
-          });
+  //         groupedVehicles[groupName].forEach((trike) => {
+  //           sectionHTML += `
+  //             <div class="col-md-6 col-sm-12 col-lg-3 col-xl-4">
+  //               <div class="model-card card">
+  //                 <img src="${trike.preview_image}" alt="${trike.name}" class="img-fluid img-bike">
+  //                 <div class="card-body card-details">
+  //                   <p class="text-dark text-dak">${trike.name}</p>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           `;
+  //         });
 
-          sectionHTML += `</div>`; // Close row
+  //         sectionHTML += `</div>`; // Close row
 
-          container.innerHTML += sectionHTML; // Append the generated section
-        });
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  });
+  //         container.innerHTML += sectionHTML; // Append the generated section
+  //       });
+  //     })
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // });
 
- $(document).ready(function() {
-    // Fetch the JSON data from the provided URL
-    $.getJSON("https://configurator-v1.netlify.app/Assets/Js/Trikes.json", function(data) {
+  $(document).ready(function() {
+    // Fetch the local JSON file from Assets/Js/Trikes.json
+    $.getJSON("Assets/Js/Trikes.json", function(data) {
         
-        // When a model card is clicked
-        $('.model-card').on('click', function() {
+        // When a model card (inside <a>) is clicked
+        $('a[data-id]').on('click', function(e) {
+            // Prevent default anchor link behavior
+            e.preventDefault();
+
             // Get the data-id of the clicked card
             var cardId = $(this).data('id');
 
             // Find the corresponding item from the JSON data
-            var selectedItem = data.find(function(item) {
+            var selectedItem = data.vehicles.find(function(item) {
                 return item.id === cardId;
             });
 
