@@ -368,40 +368,28 @@ $(document).ready(function() {
   //     .catch((error) => console.error("Error fetching data:", error));
   // });
 
-  $(document).ready(function() {
-    // Fetch the local JSON file from Assets/Js/Trikes.json
-    $.getJSON("./trikes.json", function(data) {
-        
-        // When a model card (inside <a>) is clicked
-        $('a[data-id]').on('click', function(e) {
-            // Prevent default anchor link behavior
-            e.preventDefault();
+$(document).on('click', 'a[data-id]', function(e) {
+    e.preventDefault(); // Prevent page reload
 
-            // Get the data-id of the clicked card
-            var cardId = $(this).data('id');
+    var cardId = $(this).data('id'); // Get the data-id of the clicked card
 
-            // Find the corresponding item from the JSON data
-            var selectedItem = data.vehicles.find(function(item) {
-                return item.id === cardId;
-            });
-
-            // Check if the item exists
-            if (selectedItem) {
-                // Clear previous features in case the modal is opened multiple times
-                $('#featuresList').empty();
-
-                // Insert the features into the modal
-                selectedItem.features.forEach(function(feature) {
-                    $('#featuresList').append('<li class="list-group-item">' + feature + '</li>');
-                });
-
-                // Show the modal
-                $('#featuresModal').modal('show');
-            } else {
-                alert('No features found for this model.');
-            }
-        });
-    }).fail(function() {
-        alert("Failed to load the JSON data.");
+    // Find the corresponding item from the JSON data
+    var selectedItem = data.vehicles.find(function(item) {
+        return item.id === cardId;
     });
+
+    // Check if the item exists
+    if (selectedItem) {
+        $('#featuresList').empty(); // Clear previous features
+
+        // Insert the features into the modal
+        selectedItem.features.forEach(function(feature) {
+            $('#featuresList').append('<li class="list-group-item">' + feature + '</li>');
+        });
+
+        // Show the modal
+        $('#featuresModal').modal('show');
+    } else {
+        alert('No features found for this model.');
+    }
 });
