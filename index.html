@@ -45,7 +45,7 @@
             <h1 class="text-center mb-4 text-dark text-head">Pur 3 Explorer</h1>
             <div class="row justify-content-center" style="gap: none !important;">
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="1">
                     <img src="./Assets/Img/Pur3-Explorer.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">Pur 3 Explorer</p>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="2">
                     <img src="./Assets/Img/Pur-3-Explorer-Touring.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">Pur 3 Explorer Touring</p>
@@ -64,7 +64,7 @@
             <h1 class="text-center mb-4 text-dark text-head">Pur 3 GT</h1>
             <div class="row justify-content-center" style="gap: none !important;">
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="3">
                     <img src="./Assets/Img/Pur3-GT.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">Pur 3 GT</p>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="4">
                     <img src="./Assets/Img/PUR3-GT-TOURING.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">Pur 3 GT Touring</p>
@@ -83,7 +83,7 @@
             <h1 class="text-center mb-4 text-dark text-head">RF1 GT </h1>
             <div class="row justify-content-center" style="gap: none !important;">
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="5">
                     <img src="./Assets/Img/RF1-GT.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">RF1 GT </p>
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="6">
                     <img src="./Assets/Img/RF1-GT-TOURING.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">RF1 GT TOURING</p>
@@ -102,7 +102,7 @@
             <h1 class="text-center mb-4 text-dark text-head">RF ST</h1>
             <div class="row justify-content-center" style="gap: none !important;">
                 <div class="col-md-6  col-sm-12 col-lg-3 " style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="7">
                     <img src="./Assets/Img/RF1-ST-2.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">RF ST 2</p>
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-sm-12 col-lg-3 " style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="8">
                     <img src="./Assets/Img/RF1-ST-3.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">RF ST 3</p>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="9">
                     <img src="./Assets/Img/RF1-ST-2-TOURING.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">RF 1 ST 2 TOURING</p>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12 col-lg-3" style="gap: none !important;">
-                    <div class="model-card card">
+                    <div class="model-card card" data-id="10">
                     <img src="./Assets/Img/ST-3-TOURING.png" alt="" class="img-fluid img-bike">
                     <div class="card-body card-details">
                     <p class="text-dark text-dak">ST 3 TOURING</p>
@@ -137,7 +137,23 @@
                 
             </div>
         </div>
-
+<!-- Overlay Modal (Bootstrap) -->
+<div class="modal fade" id="featuresModal" tabindex="-1" aria-labelledby="featuresModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="featuresModalLabel">Model Features</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="featuresList" class="list-group">
+            <!-- Features will be dynamically inserted here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
     </main>
 </body>
