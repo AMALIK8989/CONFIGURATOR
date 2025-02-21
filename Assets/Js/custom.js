@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //      1024: { slidesPerView: 5 },
 //    },
 //  });
-});
+//});
 
 
 //var swiper = new Swiper(".swiper-container", swiperOptions);
@@ -368,9 +368,9 @@ $(document).ready(function() {
   //     .catch((error) => console.error("Error fetching data:", error));
   // });
 
-$(document).ready(function() {
-    // Fetch the local JSON file from Assets/Js/Trikes.json
-    $.getJSON("./trikes.json", function(data) {
+  $(document).ready(function() {
+    // Load the trikes.json file
+    $.getJSON("./Assets/Js/trikes.json", function(data) {
         
         console.log('JSON data loaded'); // Check if JSON is loaded
 
@@ -384,7 +384,7 @@ $(document).ready(function() {
             console.log('Card ID: ' + cardId); // Log the ID of the clicked card
 
             // Find the corresponding item from the JSON data
-            var selectedItem = data.vehicles.find(function(item) {
+            var selectedItem = data.trikles.find(function(item) {
                 return item.id === cardId;
             });
 
@@ -392,22 +392,55 @@ $(document).ready(function() {
 
             // Check if the item exists
             if (selectedItem) {
-                // Clear previous features in case the modal is opened multiple times
-                $('#featuresList').empty();
-                console.log('Features being added'); // Check before appending features
+                // Store the features and price in local storage
+                localStorage.setItem('selectedItemFeatures', JSON.stringify(selectedItem.features));
+                localStorage.setItem('selectedItemPrice', selectedItem.Price); // Price field is "Price" in your JSON
 
-                // Insert the features into the modal
-                selectedItem.features.forEach(function(feature) {
-                    $('#featuresList').append('<li class="list-group-item">' + feature + '</li>');
-                });
-
-                // Show the modal
-                $('#featuresModal').modal('show');
+                // Redirect to the model.html
+                window.location.href = './model.html';
             } else {
-                alert('No features found for this model.');
+                alert('No features or price found for this model.');
             }
         });
     }).fail(function() {
         alert("Failed to load the JSON data.");
     });
+});
+
+$(document).ready(function() {
+  // Click event for the info button
+  $('.btn-dark.icon').on('click', function() {
+      // Retrieve the features and price from localStorage
+      var features = JSON.parse(localStorage.getItem('selectedItemFeatures'));
+      var price = localStorage.getItem('selectedItemPrice');
+
+      // Check if features and price are available in localStorage
+      if (features && price) {
+          console.log('Features:', features);  // Logs the features array to the console
+          console.log('Price:', price);        // Logs the price to the console
+
+          // Clear the features list before appending new items
+          $('#featuresList').empty();
+
+          // Insert the features into the modal
+          features.forEach(function(feature) {
+              $('#featuresList').append('<li class="list-group-item">' + feature + '</li>');
+          });
+
+          // Insert the price into the price element with your existing classes
+          $('.price').html('<p><strong>Price: </strong>' + price + '</p>');
+
+          // Show the modal
+          $('#featuresModal').modal('show');
+      } else {
+          alert('No data available for this model.');
+      }
+  });
+});
+$(document).ready(function() {
+  // When the close button is clicked
+  $('.btn-close').on('click', function() {
+      // Select the modal element and hide it
+      $('#featuresModal').modal('hide');
+  });
 });

@@ -1,9 +1,10 @@
 {
-  "vehicles": [
+  "trikles": [
     {
       "id": 1,
       "name": "PUR3 Explorer",
       "preview_image": "../Img/Pur3-Explorer.png",
+      "Price":"$37,900.00",
       "features": [
         "Acoustic turn signal warning system",
         "Adaptive chassis (front/rear adjustable from comfort to sporty)",
@@ -44,7 +45,8 @@
     {
       "id": 2,
       "name": "PUR3 Explorer Touring",
-      "preview_image": "../Img/Pur-3-Explorer-Touring.png",
+      "preview_image": "../IMG/API/pur3-exploring.png",
+      "Price":"$41,900.00",
       "features": [
         "Acoustic turn signal warning system",
         "Adaptive chassis (front/rear adjustable from comfort to sporty)",
